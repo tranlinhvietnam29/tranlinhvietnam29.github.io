@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>DeveloperX — Mobile & Developer Support Studio</title>
+  <meta name="description" content="DeveloperX builds top-quality mobile apps and provides on-demand developer support: performance, releases, bug fixing, and feature delivery."/>
+  <meta property="og:title" content="DeveloperX — Mobile & Dev Support"/>
+  <meta property="og:description" content="Top-tier mobile apps. On-demand developer support."/>
+  <meta property="og:type" content="website"/>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #f7fafc;
+      --paper: #ffffffcc;
+      --line: #e5e7eb;
+      --text: #0f172a;          /* slate-900 */
+      --muted:#475569;          /* slate-600 */
+      --brand:#0ea5a2;          /* teal-500 */
+      --brand-600:#0d9488;      /* teal-600 */
+      --ink:#0b132b;            /* charcoal */
+      --accent:#22c55e;         /* green-500 for success */
+      --radius:14px;
+      --shadow: 0 10px 30px rgba(2,6,23,.08);
+    }
+
+    /* Base */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text); background:
+        radial-gradient(1200px 600px at 10% -100px, #e0fbfc 0%, transparent 50%),
+        radial-gradient(900px 500px at 110% 30%, #ccfbf1 0%, transparent 50%),
+        var(--bg);
+      line-height:1.6;
+    }
+    img{max-width:100%; display:block}
+    a{color:var(--brand); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1100px; margin:0 auto; padding:24px 20px}
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter:saturate(180%) blur(10px);
+      background:rgba(255,255,255,.7);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .brand{display:flex; align-items:center; gap:10px}
+    .brand img{height:40px; border-radius:10px}
+    .brand strong{font-weight:800; letter-spacing:.2px}
+    nav a{font-weight:600; margin-left:16px; color:var(--muted)}
+    nav a:hover{color:var(--text)}
+    .cta{
+      display:inline-flex; align-items:center; gap:8px;
+      background:var(--brand); color:#fff; border-radius:999px; padding:10px 16px;
+      font-weight:700; border:none; cursor:pointer; box-shadow:var(--shadow);
+      transition:transform .06s ease, background .2s ease;
+    }
+    .cta:hover{background:var(--brand-600)}
+    .cta:active{transform:translateY(1px)}
+
+    /* Hero */
+    .hero{padding:64px 0 28px}
+    .lead{
+      display:grid; grid-template-columns: 1.3fr 1fr; gap:28px; align-items:center;
+    }
+    .heroCard{
+      background:var(--paper); backdrop-filter:blur(8px);
+      border:1px solid var(--line); border-radius:var(--radius); padding:28px; box-shadow:var(--shadow);
+    }
+    .eyebrow{display:inline-block; font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--brand); background:#99f6e4; padding:6px 10px; border-radius:999px}
+    h1{font-size:clamp(28px,4.4vw,46px); line-height:1.15; margin:12px 0 8px; letter-spacing:-.02em}
+    .sub{color:var(--muted); font-size:18px}
+    .heroActions{display:flex; gap:12px; margin-top:18px; flex-wrap:wrap}
+    .ghost{border:1px solid var(--line); border-radius:999px; padding:10px 16px; font-weight:700; color:var(--text); background:#fff}
+    .ghost:hover{border-color:#cbd5e1}
+
+    .metrics{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:10px
+    }
+    .metric{background:#fff; border:1px solid var(--line); border-radius:12px; padding:16px; text-align:center}
+    .metric strong{display:block; font-size:22px}
+    .metric span{color:var(--muted); font-size:12px}
+
+    /* Sections */
+    section{margin-top:56px}
+    h2{font-size:26px; margin:0 0 10px}
+    .kicker{color:var(--muted); margin-bottom:14px}
+
+    /* Services */
+    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    .card{
+      background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:22px;
+      transition:transform .18s ease, box-shadow .18s ease; box-shadow:0 6px 18px rgba(2,6,23,.04);
+    }
+    .card:hover{transform:translateY(-4px); box-shadow:0 18px 34px rgba(2,6,23,.08)}
+    .card h3{margin:6px 0 6px}
+    .chip{display:inline-block; padding:4px 8px; border-radius:999px; font-size:12px; font-weight:700; background:#ecfeff; color:#0e7490; border:1px solid #bae6fd}
+
+    /* Support list */
+    .list{display:grid; grid-template-columns:repeat(2,1fr); gap:16px}
+    .li{background:linear-gradient(180deg,#ffffff 0%,#f9fafb 100%); border:1px dashed #dbeafe; border-radius:12px; padding:18px}
+    .li h4{margin:2px 0 6px}
+    .li p{color:var(--muted); margin:0}
+
+    /* Testimonials / Case */
+    .case{
+      display:grid; grid-template-columns:1fr 1.2fr; gap:16px; align-items:stretch
+    }
+    .quote{
+      background:#0b132b; color:#e2e8f0; border-radius:var(--radius); padding:24px; display:flex; flex-direction:column; justify-content:space-between
+    }
+    .quote em{opacity:.85}
+    .badges{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+    .badge{background:#0ea5a214; border:1px solid #0ea5a233; color:#5eead4; padding:6px 10px; border-radius:999px; font-size:12px; font-weight:700}
+    .panel{
+      background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:22px
+    }
+    .panel ul{margin:0; padding-left:18px}
+    .panel li{margin:8px 0}
+
+    /* Contact */
+    .contact{
+      background:linear-gradient(180deg,#ecfeff 0%,#ffffff 50%, #ffffff 100%);
+      border:1px solid var(--line); border-radius:var(--radius); padding:22px
+    }
+    form{display:grid; gap:12px; margin-top:8px}
+    input, textarea{
+      width:100%; padding:12px 14px; border:1px solid #d1d5db; border-radius:10px; background:#fff;
+      outline:none; transition:border-color .2s, box-shadow .2s;
+    }
+    input:focus, textarea:focus{border-color:#94a3b8; box-shadow:0 0 0 3px rgba(14,165,158,.15)}
+    button[type=submit]{justify-self:start}
+
+    /* Footer */
+    footer{margin-top:40px; padding:24px 0; border-top:1px solid var(--line); color:var(--muted); text-align:center}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .lead{grid-template-columns:1fr}
+      .case{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:640px){
+      .grid{grid-template-columns:1fr}
+      .list{grid-template-columns:1fr}
+      .metrics{grid-template-columns:1fr 1fr}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <img src="https://raw.githubusercontent.com/devsupportX/devsupportX.github.io/refs/heads/main/developerX.png" alt="Developer logo">
+        <strong>DeveloperX</strong>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#support">Dev Support</a>
+        <a href="#contact" class="cta">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container lead">
+      <div class="heroCard">
+        <span class="eyebrow">Mobile & Dev Support Studio</span>
+        <h1>Build apps users love. Ship faster. Sleep better.</h1>
+        <p class="sub">We design and ship high-quality iOS & Android apps, then keep them fast, stable, and compliant. On-demand developer support when you need it most.</p>
+        <div class="heroActions">
+          <a href="#contact" class="cta" aria-label="Start a project with DeveloperX">Start a Project →</a>
+          <a href="#services" class="ghost">Explore Services</a>
+        </div>
+
+        <div class="metrics">
+          <div class="metric"><strong>10+ yrs</strong><span>Mobile expertise</span></div>
+          <div class="metric"><strong>50M+</strong><span>End-users served</span></div>
+          <div class="metric"><strong>Top Charts</strong><span>App Store features</span></div>
+        </div>
+      </div>
+
+      <div class="heroCard" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1600&auto=format&fit=crop" alt="App screens mockup">
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <h2>About DeveloperX</h2>
+      <p class="kicker">We’re a compact senior team focused on outcomes, not vanity metrics.</p>
+      <div class="card">
+        <p>From zero-to-one product sprints to enterprise-grade rebuilds, we deliver native apps with crisp UX, robust architecture, and measurable business impact. Post-launch, our developer support keeps your releases smooth and your crash rate low.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="container">
+      <h2>Services</h2>
+      <p class="kicker">Everything you need to go from idea → shipped → scaled.</p>
+      <div class="grid">
+        <div class="card">
+          <span class="chip">Strategy</span>
+          <h3>Rapid Product Prototyping</h3>
+          <p>Validate in weeks, not months. Clickable flows, tech spikes, and a roadmap that balances risk and speed.</p>
+        </div>
+        <div class="card">
+          <span class="chip">Native</span>
+          <h3>iOS & Android Development</h3>
+          <p>Swift/SwiftUI & Kotlin/Jetpack with clean modules, CI/CD, analytics, and accessibility baked in.</p>
+        </div>
+        <div class="card">
+          <span class="chip">Design</span>
+          <h3>UX/UI Systems</h3>
+          <p>Design systems, motion, and micro-interactions that feel premium and convert.</p>
+        </div>
+        <div class="card">
+          <span class="chip">Quality</span>
+          <h3>Performance & Stability</h3>
+          <p>Cold-start time, ANR, and crash-free sessions tuned with observability and profiling.</p>
+        </div>
+        <div class="card">
+          <span class="chip">Growth</span>
+          <h3>Release & ASO Coaching</h3>
+          <p>Release trains, Store listings, review response ops, and experiment frameworks.</p>
+        </div>
+        <div class="card">
+          <span class="chip">Integration</span>
+          <h3>APIs & SDKs</h3>
+          <p>Auth, payments, maps, media, and custom SDKs with solid docs and samples.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Developer Support -->
+  <section id="support">
+    <div class="container">
+      <h2>Developer Support</h2>
+      <p class="kicker">On-call expertise to unblock your team and keep velocity high.</p>
+
+      <div class="list">
+        <div class="li">
+          <h4>Incident & Bug Triage</h4>
+          <p>We reproduce, prioritize, and patch. Clear checklists and regression tests included.</p>
+        </div>
+        <div class="li">
+          <h4>Performance Clinics</h4>
+          <p>Frame drops, memory leaks, battery drain—profiled and fixed with before/after metrics.</p>
+        </div>
+        <div class="li">
+          <h4>Feature Acceleration</h4>
+          <p>Pair with your team to land tricky features, refactors, or deadline-driven releases.</p>
+        </div>
+        <div class="li">
+          <h4>Compliance & Reviews</h4>
+          <p>App Store & Play policy checks, privacy manifests, and submission support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Small Case/Proof -->
+  <section>
+    <div class="container case">
+      <div class="quote">
+        <div>
+          <h3 style="margin-top:0">Results, not promises</h3>
+          <p><em>“DeveloperX helped us cut crash rate by 62% and ship a revenue-critical release two weeks early.”</em></p>
+          <div class="badges">
+            <span class="badge">Crash-free 99.7%</span>
+            <span class="badge">TTI −35%</span>
+            <span class="badge">Top 10 Category</span>
+          </div>
+        </div>
+        <div aria-hidden="true" style="opacity:.5; font-size:12px; margin-top:16px">Representative metrics from client work</div>
+      </div>
+
+      <div class="panel">
+        <h3 style="margin-top:0">Typical Engagement</h3>
+        <ul>
+          <li>Week 1: Audit, metrics, and plan</li>
+          <li>Weeks 2–4: Fix foundations, ship wins</li>
+          <li>Ongoing: Release cadence & guardrails</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container contact">
+      <h2>Let’s work together</h2>
+      <p class="kicker">Tell us what you’re building and where you’re stuck.</p>
+      <form action="mailto:exostudio24@gmail.com" method="post" enctype="text/plain">
+        <input type="text" name="name" placeholder="Full Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <input type="text" name="company" placeholder="Company / App" />
+        <textarea name="message" rows="5" placeholder="What problem can we solve?" required></textarea>
+        <button type="submit" class="cta" aria-label="Send message to Developer">Send Message</button>
+      </form>
+      <p style="margin:10px 0 0">Prefer email? <a href="mailto:exostudio24@gmail.com"><strong>exostudio24@gmail.com</strong></a></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      © 2025 DeveloperX. All rights reserved — Mobile Apps & Developer Support.
+      <a href="https://vixtorhoang.github.io" class="app-store-btn">
+                <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1276560000&h=7e7b68fad3d018ee560adcde18c402d5" alt="Download on the App Store">
+            </a>
+    </div>
+  </footer>
+</body>
+</html>
